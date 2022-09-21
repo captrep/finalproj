@@ -54,6 +54,8 @@
   <!-- Page Specific JS File -->
   <script src="{{asset('js/page/auth-register.js')}}"></script>
   <script src="{{asset('js/page/forms-advanced-forms.js')}}"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  @stack('flashmessage')
 </body>
-@include('sweetalert::alert')
+
 </html>
