@@ -34,7 +34,6 @@
                             <div class="form-group">
                                 <label>Sifat Kriteria</label>
                                     <select class="form-control select2 @error('type') is-invalid @enderror" name="type">
-                                    <option value="">--Pilih Sifat Kriteria--</option>
                                     <option value="Benefit" {{ ($criteria->type) == 'Benefit' ? 'selected' : '' }} >Benefit</option>
                                     <option value="Cost" {{ ($criteria->type) == 'Cost' ? 'selected' : '' }} >Cost</option>
                                     </select>
@@ -46,7 +45,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Bobot Kriteria</label>
-                                <input type="text" name="weighted" class="form-control @error('weighted') is-invalid @enderror" value="{{old('weighted') ?? $weight->weighted}}">
+                                <input type="text" name="weighted" class="form-control @error('weighted') is-invalid @enderror" value="{{old('weighted') ?? $criteria->weighted}}">
                                 @error('weighted')
                                 <div class="invalid-feedback">
                                     {{$message}}
@@ -62,10 +61,10 @@
                                             <td>
                                                 <a href="{{route('edit.fuzzy', $item->id)}}" class="btn btn-info">Ubah</a>
                                                 <a href="#" data-id="{{ $item->id }}" class="btn btn-danger alert-confirm"> Hapus
-                                                    <form action="{{route('delete.fuzzy', $item->id)}}" id="delete{{ $item->id }}" method="POST">
+                                                    {{-- <form action="{{route('delete.fuzzy', $item->id)}}" id="delete{{ $item->id }}" method="POST">
                                                       @csrf
                                                       @method('delete')
-                                                    </form>
+                                                    </form> --}}
                                                 </a>
                                             </td>
                                         </tr>

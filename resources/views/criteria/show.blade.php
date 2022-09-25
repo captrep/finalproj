@@ -2,7 +2,7 @@
 @extends('layouts.footer')
 @extends('layouts.header')
 @extends('layouts.sidebar')
-@section('title','Santri')
+@section('title','Kriteria')
 @section('content')
 <div class="main-content">
     <section class="section">

@@ -11,8 +11,7 @@ class CriteriaController extends Controller
 {
     public function show()
     {
-        $queryResult = Criteria::join('weights', 'weights.criteria_id', '=', 'criterias.id')
-                            ->join('parameters', 'parameters.criteria_id', '=', 'criterias.id')
+        $queryResult = Criteria::join('parameters', 'parameters.criteria_id', '=', 'criterias.id')
                             ->get();
         $dataForUi = [];
         foreach ($queryResult as $q) {
@@ -36,6 +35,7 @@ class CriteriaController extends Controller
                     array_push($dataForUi, $newData);  
 			}
         }
+        // dd($dataForUi);
         return view('criteria.show', ['criterias' => $dataForUi]);
     }
 
@@ -46,21 +46,14 @@ class CriteriaController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $attr = $request->validate([
             'name' => ['required', 'unique:criterias', 'string'],
             'type' => ['required'],
             'weighted' => ['required', 'numeric'],
         ]);
 
-        $criteria = Criteria::create($request->only('name','type'));
-        if ($criteria) {
-            Weight::Create([
-                'criteria_id' => $criteria->id,
-                'weighted' => $request->weighted
-            ]);
-        }
-        session()->flash('successDaftar');
-        return redirect(route('show.criteria'));
+        Criteria::create($attr);
+        return redirect(route('create.fuzzy'));
     }
 
     public function createFuzzy()
@@ -88,23 +81,19 @@ class CriteriaController extends Controller
     public function edit($id)
     {
         $criteria = Criteria::where('id', $id)->with('parameters')->first();
-        $weight = Weight::where('criteria_id', $id)->first();
-        return view('criteria.edit', compact('criteria','weight'));
+        return view('criteria.edit', compact('criteria'));
     }
 
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $attr = $request->validate([
             'name' => ['required', 'string'],
             'type' => ['required'],
             'weighted' => ['required', 'numeric'],
-            'fuzzy' => ['required', 'numeric', 'min:10', 'max:50'],
-            'description' => ['required','string'],
+
         ]);
 
-        Criteria::where('id', $id)->update(['name' => $request->name,
-                                            'type' => $request->type]);
-        Weight::where('criteria_id', $id)->update(['weighted' => $request->weighted]);
+        Criteria::where('id', $id)->update($attr);
         session()->flash('successUpdate');
         return redirect(route('show.criteria'));
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssesmentController;
 use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
@@ -46,6 +47,10 @@ Route::middleware('auth')->group(function() {
     Route::get('kriteria/fuzzy/{parameter:id}/ubah', [CriteriaController::class, 'editFuzzy'])->name('edit.fuzzy');
     Route::put('kriteria/fuzzy/{parameter:id}/ubah', [CriteriaController::class, 'updateFuzzy'])->name('update.fuzzy');
     Route::delete('kriteria/fuzzy/{parameter:id}/delete', [CriteriaController::class, 'destroyFuzzy'])->name('delete.fuzzy');
+    Route::get('penilaian/tambah', [AssesmentController::class, 'create'])->name('create.assesment');
+    Route::post('penilaian', [AssesmentController::class, 'store'])->name('store.assesment');
+    Route::get('penilaian/list', [AssesmentController::class, 'show'])->name('show.assesment');
+    Route::delete('penilaian/{assesment:student_id}/delete', [AssesmentController::class, 'destroy'])->name('delete.assesment');
     Route::post('logout', LogoutController::class)->name('logout');
 });
 

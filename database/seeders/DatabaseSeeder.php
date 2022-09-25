@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Yusril Sidik',
             'username' => 'admin',
             'email' => 'admin@dampasan.com',
-            'password' => Hash::make('123456'),
+            'password' =>'123456',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

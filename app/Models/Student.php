@@ -11,4 +11,9 @@ class Student extends Model
     protected $fillable = [
         'name', 'schoolorigin', 'birthplace', 'birthdate', 'photo', 'address', 'city', 'province', 'postalcode'
     ];
+    
+    public function assesment()
+    {
+        return $this->hasOne(Assesment::class);
+    }
 }

@@ -11,6 +11,7 @@ class Criteria extends Model
     protected $fillable = [
         'name',
         'type',
+        'weighted',
     ];
 
     public function parameters()
@@ -18,8 +19,8 @@ class Criteria extends Model
         return $this->hasMany(Parameter::class);
     }
 
-    public function weigth()
+    public function assesments()
     {
-        return $this->hasOne(Weight::class);
+        return $this->hasMany(Assesment::class);
     }
 }

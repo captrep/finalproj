@@ -11,7 +11,7 @@ class StudentController extends Controller
 {
     public function show()
     {
-        $students = Student::latest()->paginate(5);
+        $students = Student::paginate(5);
         return view('student.show', compact('students'));
     }
 
