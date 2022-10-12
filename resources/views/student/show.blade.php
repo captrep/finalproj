@@ -7,17 +7,17 @@
 <div class="main-content">
     <section class="section">
       <div class="section-header">
-        <h1>Halaman Santri</h1>
+        <h1>Halaman Data Santri</h1>
       </div>
       <div class="section-body">
         <h2 class="section-title">List Data Santri</h2>
         <p class="section-lead">
-          This page is just an example for you to create your own page.</p>
+          Berikut adalah data calon santri</p>
         <div class="row">
           <div class="col-12">
             <div class="card card-primary">
               <div class="card-header">
-                <h4>Simple Table</h4>
+                <h4>Data Santri</h4>
               </div>
               <div class="card-body p-0">
                 <div class="table-responsive">
@@ -28,7 +28,7 @@
                       <th>Asal Sekolah</th>
                       <th>Tempat Lahir</th>
                       <th>Tanggal Lahir</th>
-                      <th>Alamat</th>
+                      <th style="width:20%">Alamat</th>
                       <th>Foto</th>
                       <th>Action</th>
                     </tr>
@@ -39,9 +39,13 @@
                       <td>{{$student->schoolorigin}}</td> 
                       <td>{{$student->birthplace}}</td>
                       <td>{{$student->birthdate}}</td>
-                      <td>{{$student->addres . $student->city . $student->province . $student->postalcode}}</td>
+                      <td>{{$student->address . " " . $student->city . " " . $student->province . " " . $student->postalcode}}</td>
                       <td>
-                        <img alt="image" src="{{asset("storage/".$student->photo)}}" class="rounded-circle" width="35">
+                        @if ($student->photo == null)
+                          <img alt="image" src="{{asset("img/avatar/avatar-1.png")}}" class="rounded-circle" width="35">
+                        @else
+                          <img alt="image" src="{{asset("storage/".$student->photo)}}" class="rounded-circle" width="35">
+                        @endif
                       </td>
                       <td>
                         <a href="{{route('edit.santri',$student->id)}}" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i></a>

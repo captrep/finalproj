@@ -7,7 +7,7 @@
 <div class="main-content">
     <section class="section">
       <div class="section-header">
-        <h1>Halaman Kriteria</h1>
+        <h1>Halaman Tambah Fuzzy Kriteria</h1>
       </div>
       <div class="section-body">
         <h2 class="section-title">Tambah Nilai Fuzzy</h2>

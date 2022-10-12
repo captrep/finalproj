@@ -7,7 +7,7 @@
 <div class="main-content">
     <section class="section">
       <div class="section-header">
-        <h1>Halaman Kriteria</h1>
+        <h1>Halaman Data Kriteria</h1>
       </div>
       <div class="section-body">
         <h2 class="section-title">List Data Kriteria</h2>
@@ -38,17 +38,7 @@
                       <td>{{$criteria['type']}}</td> 
                       <td>
                         @foreach ($criteria['fuzzy'] as $fuzzy)
-                        @if ($fuzzy == 50)
-                        {{$fuzzy}} = Sangat Baik<br>
-                        @elseif ($fuzzy == 40)
-                        {{$fuzzy}} = Cukup Baik<br>
-                        @elseif ($fuzzy == 30)
-                        {{$fuzzy}} = Baik<br>
-                        @elseif ($fuzzy == 20)
-                        {{$fuzzy}} = Cukup<br>
-                        @elseif ($fuzzy == 10)
-                        {{$fuzzy}} = Buruk<br>
-                        @endif
+                        {{$fuzzy}}<br>
                         @endforeach
                       </td>
                       <td>

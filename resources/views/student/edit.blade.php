@@ -7,7 +7,7 @@
 <div class="main-content">
     <section class="section">
       <div class="section-header">
-        <h1>Halaman Santri</h1>
+        <h1>Halaman Ubah Santri</h1>
       </div>
       <div class="section-body">
         <h2 class="section-title">Ubah Data Santri</h2>
@@ -97,7 +97,11 @@
                         <div class="form-group">
                           <label>Foto</label>
                           <div class="form-group">
-                            <img alt="image" src="{{asset('storage/' . $student->photo)}}" width="150" class="rounded-circle">
+                            @if ($student->photo == null)
+                              <img alt="image" src="{{asset("img/avatar/avatar-1.png")}}" class="rounded-circle" width="35">
+                            @else
+                              <img alt="image" src="{{asset("storage/".$student->photo)}}" class="rounded-circle" width="35">
+                            @endif
                           </div>
                           <input type="file" name="photo" class="form-control @error('photo') is-invalid @enderror" value="{{old('photo')}}">
                           @error('photo')

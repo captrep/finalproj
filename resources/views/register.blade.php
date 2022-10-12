@@ -70,7 +70,7 @@
             <div class="row">
                 <div class="form-group col-6">
                     <label>Alamat</label>
-                    <input id="address" name="address" type="text" class="form-control @error('address') is-invalid @enderror" value="{{old('address')}}" placeholder="Jl xzxxxx">
+                    <input id="address" name="address" type="text" class="form-control @error('address') is-invalid @enderror" value="{{old('address')}}" placeholder="Cth: Jln apa tuh no 43">
                     @error('address')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -79,7 +79,7 @@
                 </div>
                 <div class="form-group col-6">
                     <label>Kota/Kabupaten</label>
-                    <input id="city" name="city" type="text" class="form-control @error('city') is-invalid @enderror" value="{{old('city')}}">
+                    <input id="city" name="city" type="text" class="form-control @error('city') is-invalid @enderror" value="{{old('city')}}" placeholder="Cth: Ciamis">
                     @error('city')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -90,7 +90,7 @@
             <div class="row">
                 <div class="form-group col-6">
                     <label>Provinsi</label>
-                    <input id="province" name="province" type="text" class="form-control @error('province') is-invalid @enderror" value="{{old('province')}}">
+                    <input id="province" name="province" type="text" class="form-control @error('province') is-invalid @enderror" value="{{old('province')}}" placeholder="Cth: Jawa Barat">
                     @error('province')
                     <div class="invalid-feedback">
                       {{ $message }}
@@ -99,7 +99,7 @@
                 </div>
                 <div class="form-group col-6">
                     <label>Kode Pos</label>
-                    <input id="postalcode" name="postalcode" type="text" class="form-control @error('postalcode') is-invalid @enderror" value="{{old('postalcode')}}">
+                    <input id="postalcode" name="postalcode" type="text" class="form-control @error('postalcode') is-invalid @enderror" value="{{old('postalcode')}}" placeholder="Cth: 112233">
                     @error('postalcode')
                     <div class="invalid-feedback">
                       {{ $message }}

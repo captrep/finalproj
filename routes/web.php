@@ -5,10 +5,9 @@ use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
-use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\ResultController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
-use RealRashid\SweetAlert\Facades\Alert;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,7 +49,12 @@ Route::middleware('auth')->group(function() {
     Route::get('penilaian/tambah', [AssesmentController::class, 'create'])->name('create.assesment');
     Route::post('penilaian', [AssesmentController::class, 'store'])->name('store.assesment');
     Route::get('penilaian/list', [AssesmentController::class, 'show'])->name('show.assesment');
+    Route::get('penilaian/{assesment:student_id}/ubah', [AssesmentController::class, 'edit'])->name('edit.assesment');
+    Route::put('penilaian/{assesment:student_id}/ubah', [AssesmentController::class, 'update'])->name('update.assesment');
     Route::delete('penilaian/{assesment:student_id}/delete', [AssesmentController::class, 'destroy'])->name('delete.assesment');
+    Route::post('penilaian/list/store', [AssesmentController::class, 'storeResults'])->name('store.results');
+    Route::get('penilaian/hasil', [ResultController::class, 'show'])->name('choose.results');
+    Route::get('penilaian/hasil/{result:id}', [ResultController::class, 'results'])->name('show.results');
     Route::post('logout', LogoutController::class)->name('logout');
 });
 

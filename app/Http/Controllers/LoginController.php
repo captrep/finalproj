@@ -17,7 +17,6 @@ class LoginController extends Controller
 
    public function store(Request $request)
    {
-      // dd($request);
       $attr = $request->validate([
          'username' => ['required', 'alphanum'],
          'password' => ['required'],
@@ -26,20 +25,9 @@ class LoginController extends Controller
      if (Auth::attempt($attr)) {
          return redirect('dashboard');
      }
-
-      // $user = User::whereUsername($request->username)->first();
-      // if($user){
-      //    if (Hash::check($request->password, $user->password)) {
-      //      dd('bisa');
-      //    }else{
-      //       dd('gabisa');
-      //    }
-      // }
-      
-
      throw ValidationException::withMessages([
-      'username' => 'username gaada',
-      'password' => 'salah',
+      'username' => 'username tidak ditemukan',
+      'password' => 'password tidak ditemukan',
       ]);
       
    }

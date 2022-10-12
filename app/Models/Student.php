@@ -12,8 +12,13 @@ class Student extends Model
         'name', 'schoolorigin', 'birthplace', 'birthdate', 'photo', 'address', 'city', 'province', 'postalcode'
     ];
     
-    public function assesment()
+    public function assesments()
     {
-        return $this->hasOne(Assesment::class);
+        return $this->hasMany(Assesment::class);
+    }
+
+    public function results()
+    {
+        return $this->hasMany(Result::class);
     }
 }

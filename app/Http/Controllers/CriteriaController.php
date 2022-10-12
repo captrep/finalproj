@@ -35,7 +35,6 @@ class CriteriaController extends Controller
                     array_push($dataForUi, $newData);  
 			}
         }
-        // dd($dataForUi);
         return view('criteria.show', ['criterias' => $dataForUi]);
     }
 
@@ -47,9 +46,9 @@ class CriteriaController extends Controller
     public function store(Request $request)
     {
         $attr = $request->validate([
-            'name' => ['required', 'unique:criterias', 'string'],
-            'type' => ['required'],
-            'weighted' => ['required', 'numeric'],
+            'name' => 'required', 'unique:criterias', 'string',
+            'type' => 'required',
+            'weighted' => 'required', 'numeric',
         ]);
 
         Criteria::create($attr);
@@ -80,7 +79,8 @@ class CriteriaController extends Controller
 
     public function edit($id)
     {
-        $criteria = Criteria::where('id', $id)->with('parameters')->first();
+        $criteria = Criteria::where('id',$id)->with('parameters')->first();
+        // dd($criteria);
         return view('criteria.edit', compact('criteria'));
     }
 
